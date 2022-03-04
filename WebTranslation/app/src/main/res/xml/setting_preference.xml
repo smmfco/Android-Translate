@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="utf-8"?>
+<PreferenceScreen
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+    <PreferenceCategory android:title="사용자 정보">
+        <PreferenceScreen
+            android:key="user_name"
+            android:title="사용자 이름" />
+    </PreferenceCategory>
+
+    <PreferenceCategory android:title="웹뷰 설정">
+
+        <com.skydoves.colorpickerpreference.ColorPickerPreference
+            android:key="background_color"
+            android:title="번역 배경 색상"
+            app:preference_attachAlphaSlideBar="false"
+            app:preference_attachBrightnessSlideBar="true"
+            app:preference_colorBox_radius="26dp"
+            app:preference_dialog_negative="취소"
+            app:preference_dialog_positive="확인"
+            app:preference_dialog_title="배경 색 다이얼로그"
+            app:preference_selector="@drawable/wheel" />
+
+        <com.skydoves.colorpickerpreference.ColorPickerPreference
+            android:key="word_color"
+            android:title="번역 문자 색상"
+            app:preference_attachAlphaSlideBar="false"
+            app:preference_attachBrightnessSlideBar="true"
+            app:preference_colorBox_radius="26dp"
+            app:preference_dialog_negative="취소"
+            app:preference_dialog_positive="확인"
+            app:preference_dialog_title="문자 색 다이얼로그"
+            app:preference_selector="@drawable/wheel" />
+
+        <ListPreference
+            android:entries="@array/array_setting"
+            android:entryValues="@array/array_setting"
+            android:key="border_thick"
+            android:title="번역 테두리 굵기"/>
+
+        <ListPreference
+            android:entries="@array/array_setting2"
+            android:entryValues="@array/array_setting2"
+            android:key="border_style"
+            android:title="번역 테두리 모양"/>
+
+        <com.skydoves.colorpickerpreference.ColorPickerPreference
+            android:key="border_color"
+            android:title="번역 테두리 색상"
+            app:preference_attachAlphaSlideBar="false"
+            app:preference_attachBrightnessSlideBar="true"
+            app:preference_colorBox_radius="26dp"
+            app:preference_dialog_negative="취소"
+            app:preference_dialog_positive="확인"
+            app:preference_dialog_title="배경 색 다이얼로그"
+            app:preference_selector="@drawable/wheel" />
+
+    </PreferenceCategory>
+</PreferenceScreen>
