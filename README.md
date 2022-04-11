@@ -1,22 +1,28 @@
 [종합설계] 안드로이드 실시간 웹뷰 번역 어플리케이션
 ======================
 
-# 1. 앱 설명
-## 1.1. 기능
+# 1. 앱 소개
+## 1.1. 앱 설명
+
+## 1.2. 기능
     1. 웹 뷰 실시간 번역
     2. 문서 번역
     3. 번역 필터
 
-## 1.2. 사용 기술
-### 1.2.1 사용 프로그램
+## 1.3. 사용 기술
+### 1.3.1 사용 프로그램
+
 <p>
   <img src="https://img.shields.io/badge/Android-3DDC84?style=flat-square&logo=Android&logoColor=white"/>
 </p>
-### 1.2.2 사용 API
+
+### 1.3.2 사용 API
+
 <p>
   <img src="https://img.shields.io/badge/CSS3-1572B6?style=flat-square&logo=CSS3&logoColor=white"/>
   <img src="https://img.shields.io/badge/Git-F05032?style=flat-square&logo=Git&logoColor=white"/>
 </p>
+
 ****
 # 2. 어플 설계
 ## 2.1. 동작 순서도
