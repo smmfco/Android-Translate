@@ -3,7 +3,11 @@
 
 # 1. 앱 소개
 ## 1.1. 앱 설명
-
+    1. 모바일 환경에서 실시간으로 브라우저 내 문장이나 단어의 번역을 제공하는 시스템입니다.
+    2. 단어 및 문장을 드래그하면 해당 단어의 사전적 의미를 웹뷰에 그대로 표시합니다
+    3. 번역 결과를 사용자의 설정에 맞게 가독성있게 표현합니다
+    4. 번역 필터를 이용하여 번역의 질을 높일 수 있습니다
+    5. 문서 번역 기능을 이용하여 PDF나 이미지의 텍스트를 번역할 수 있습니다
 ## 1.2. 기능
     1. 웹 뷰 실시간 번역
     2. 문서 번역
@@ -395,10 +399,6 @@ View 영역의 항목을 그대로 붙여넣거나 HTML 내보내기 등으로 �
 * 링크 예: [Markdown 설명](https://www.dropbox.com/s/mzp9tq4qtfjdlif/20141021_markdown_use_tip.md?dl=0)
 
 ***** 
-
-# P.S.
-최근에는 [Notion](https://www.notion.so/product) 을 조금씩 사용중이다. Notion 에서 작성한 문서는 Atom(<https://atom.io/>), Visual Studio Code(<https://code.visualstudio.com/>), Notepad++(<https://notepad-plus-plus.org/>)텍스트 편집기에 복붙(복사하고 붙여넣기)하면 마크다운문법으로 작성된 문장이 기입되고 이지윅 에디터를 제공하는 웹에디터에 붙여넣기 하면 거의 완벽한 형태로 복사된다. 그래서 애용중이다.
-
 ## ○ 참고문서
 * 구글 번역 API(<http://mashable.com/2013/06/24/markdown-tools/>)
 * 파파고 API(<https://guide.ncloud-docs.com/docs/naveropenapiv3-translation-nmt>)
