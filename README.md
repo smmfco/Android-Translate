@@ -13,14 +13,14 @@
     2. 문서 번역
     3. 번역 필터
 
-## 1.3. 사용 기술
-### 1.3.1 사용 프로그램
+## 1.3. Skills
+### 1.3.1 Program
 
 <p>
   <img src="https://img.shields.io/badge/Android-3DDC84?style=flat-square&logo=Android&logoColor=white"/>
 </p>
 
-### 1.3.2 사용 API
+### 1.3.2 Tools
 
 <p>
   <img src="https://img.shields.io/badge/CSS3-1572B6?style=flat-square&logo=CSS3&logoColor=white"/>
