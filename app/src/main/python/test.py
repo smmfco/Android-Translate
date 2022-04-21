@@ -7,10 +7,10 @@ import uuid
 import json
 import base64
 
-def translate(target_Language,image_dir,file_name,efile_name):
+def translate(doc_dir,file_name,efile_name):
 
-    image_dirs = str(image_dir)
-    filenames = join(dirname(image_dirs),file_name)
+    doc_dirs = str(doc_dir)
+    filenames = join(dirname(doc_dirs),file_name)
 
     data = {
         'source': 'en',
@@ -21,8 +21,8 @@ def translate(target_Language,image_dir,file_name,efile_name):
 
     headers = {
         "Content-Type": m.content_type,
-        "X-NCP-APIGW-API-KEY-ID": "w5lgfrssck",
-        "X-NCP-APIGW-API-KEY": "tct9yx0oteeuixAnAdIOETTtKiZFhixSLzNw3vvM"
+        "X-NCP-APIGW-API-KEY-ID": "vwqskje0y7",
+        "X-NCP-APIGW-API-KEY": "pBG4LVIJe0uLmsMy99kH8DcoUzjxp4ZWXXu77WNw"
     }
 
     url = "https://naveropenapi.apigw.ntruss.com/image-to-image/v1/translate"
@@ -32,5 +32,7 @@ def translate(target_Language,image_dir,file_name,efile_name):
     imageStr = resObj.get("data").get("renderedImage")
     imgdata = base64.b64decode(imageStr)
 
-    return imageStr
-
+    files_dir = str(Python.getPlatform().getApplication().getExternalFilesDir(""))
+    filenames = join(dirname(files_dir),efile_name+"_translate.png")
+    with open(filenames, 'wb') as f:
+        f.write(imgdata)

@@ -7,32 +7,41 @@
     android:orientation="vertical"
     tools:context=".ui.home.HomeFragment">
 
-    <ImageView
-        android:id="@+id/imageView2"
-        android:layout_width="100dp"
-        android:layout_height="80dp"
-        android:layout_above="@id/textView2"
-        android:layout_centerHorizontal="true"
-        android:src="@drawable/imagefile"/>
-
-    <TextView
-        android:id="@+id/textView2"
-        android:layout_width="match_parent"
-        android:layout_height="114dp"
-        android:layout_centerInParent="true"
-        android:gravity="center"
-        android:text="이미지 파일을 선택하고\n 번역해보세요"
-        android:textAlignment="center"
-        android:textSize="30sp" />
-
-    <androidx.appcompat.widget.AppCompatButton
+    <Button
         android:id="@+id/webBtn1"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_below="@+id/textView2"
-        android:layout_centerHorizontal="true"
-        android:background="@drawable/button_back"
+        android:layout_centerInParent="true"
+        android:background="@drawable/btn_background"
         android:text="File Select" />
+
+    <Button
+        android:id="@+id/webBtn2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerInParent="true"
+        android:layout_below="@id/webBtn1"
+        android:background="@drawable/btn_background"
+        android:text="Pdf View" />
+
+    <ImageView
+        android:id="@+id/imageView2"
+        android:layout_width="100dp"
+        android:layout_height="50dp"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentTop="true"
+        android:src="@drawable/pdf" />
+
+    <TextView
+        android:id="@+id/textView2"
+        android:layout_width="187dp"
+        android:layout_height="135dp"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentEnd="true"
+        android:layout_above="@+id/webBtn1"
+        android:text="PDF 문서를 선택하고 번역해보세요"
+        android:textSize="30sp" />
+
 
     <!--
     <ScrollView

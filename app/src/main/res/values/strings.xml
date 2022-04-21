@@ -10,10 +10,10 @@
     <string name="nav_header_desc">Navigation header</string>
     <string name="action_settings">Settings</string>
 
-    <string name="menu_home">홈</string>
-    <string name="menu_wt">웹사이트 번역</string>
-    <string name="menu_dic">번역 필터</string>
-    <string name="menu_st">설정</string>
+    <string name="menu_home">Home</string>
+    <string name="menu_wt">Web Translate</string>
+    <string name="menu_dic">Dictionary</string>
+    <string name="menu_st">Settings</string>
     <string name="menu_br">Border</string>
     <string name="menu_lg">Login</string>
     <string name="menu_rg">Register</string>

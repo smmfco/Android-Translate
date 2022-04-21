@@ -32,6 +32,7 @@ class TranslateFragment : Fragment() {
     ): View {
         _binding = FragmentTranslateBinding.inflate(inflater, container, false)
 
+        (activity as MainActivity).hideFloatingActionButton()
         (activity as MainActivity).supportActionBar?.hide()
 
         setHasOptionsMenu(true)
@@ -98,13 +99,17 @@ class TranslateFragment : Fragment() {
         }
 
         binding.webClose.setOnClickListener {
-            binding.webView.clearCache(true)
-            binding.webView.clearHistory()
-            binding.webView.onPause()
-            binding.webView.removeAllViews()
-            binding.webView.destroyDrawingCache()
-            binding.webView.pauseTimers()
-            (activity as MainActivity).onBackPressed()
+            if (binding.webView.canGoBack()) {
+                binding.webView.goBack()
+            } else {
+                binding.webView.clearCache(true)
+                binding.webView.clearHistory()
+                binding.webView.onPause()
+                binding.webView.removeAllViews()
+                binding.webView.destroyDrawingCache()
+                binding.webView.pauseTimers()
+                (activity as MainActivity).onBackPressed()
+            }
         }
 
         binding.urlButton.setOnClickListener {
@@ -181,6 +186,7 @@ class TranslateFragment : Fragment() {
 
     override fun onDestroy() {
         super.onDestroy()
+        (activity as MainActivity).showFloatingActionButton()
         (activity as MainActivity).supportActionBar?.show()
         _binding = null
     }

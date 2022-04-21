@@ -10,7 +10,6 @@
         <entry key="..\:/Users/wo747/AndroidStudioProjects/WebTranslation/app/src/main/res/drawable/baseline_logout_24.xml" value="0.2777777777777778" />
         <entry key="..\:/Users/wo747/AndroidStudioProjects/WebTranslation/app/src/main/res/drawable/btn_background.xml" value="0.2537037037037037" />
         <entry key="..\:/Users/wo747/AndroidStudioProjects/WebTranslation/app/src/main/res/drawable/button_back.xml" value="0.2462962962962963" />
-        <entry key="..\:/Users/wo747/AndroidStudioProjects/WebTranslation/app/src/main/res/drawable/button_select.xml" value="0.171" />
         <entry key="..\:/Users/wo747/AndroidStudioProjects/WebTranslation/app/src/main/res/drawable/ic_launcher_background.xml" value="0.2462962962962963" />
         <entry key="..\:/Users/wo747/AndroidStudioProjects/WebTranslation/app/src/main/res/drawable/ic_menu_camera.xml" value="0.2916666666666667" />
         <entry key="..\:/Users/wo747/AndroidStudioProjects/WebTranslation/app/src/main/res/drawable/ic_menu_gallery.xml" value="0.2916666666666667" />
@@ -19,13 +18,11 @@
         <entry key="..\:/Users/wo747/AndroidStudioProjects/WebTranslation/app/src/main/res/drawable/outline_close_24.xml" value="0.2462962962962963" />
         <entry key="..\:/Users/wo747/AndroidStudioProjects/WebTranslation/app/src/main/res/drawable/outline_navigate_before_241.xml" value="0.2462962962962963" />
         <entry key="..\:/Users/wo747/AndroidStudioProjects/WebTranslation/app/src/main/res/drawable/outline_navigate_next_24.xml" value="0.2462962962962963" />
-        <entry key="..\:/Users/wo747/AndroidStudioProjects/WebTranslation/app/src/main/res/drawable/progress_bg.xml" value="0.171" />
         <entry key="..\:/Users/wo747/AndroidStudioProjects/WebTranslation/app/src/main/res/drawable/round_background.xml" value="0.29444444444444445" />
         <entry key="..\:/Users/wo747/AndroidStudioProjects/WebTranslation/app/src/main/res/drawable/side_nav_bar.xml" value="0.2462962962962963" />
         <entry key="..\:/Users/wo747/AndroidStudioProjects/WebTranslation/app/src/main/res/drawable/spinner_background.xml" value="0.2708333333333333" />
         <entry key="..\:/Users/wo747/AndroidStudioProjects/WebTranslation/app/src/main/res/layout-w1240dp/activity_login.xml" value="0.2" />
         <entry key="..\:/Users/wo747/AndroidStudioProjects/WebTranslation/app/src/main/res/layout-w936dp/activity_login.xml" value="0.16641162968630452" />
-        <entry key="..\:/Users/wo747/AndroidStudioProjects/WebTranslation/app/src/main/res/layout/activity_docs.xml" value="0.2453125" />
         <entry key="..\:/Users/wo747/AndroidStudioProjects/WebTranslation/app/src/main/res/layout/activity_image.xml" value="0.1778115501519757" />
         <entry key="..\:/Users/wo747/AndroidStudioProjects/WebTranslation/app/src/main/res/layout/activity_login.xml" value="0.22036474164133737" />
         <entry key="..\:/Users/wo747/AndroidStudioProjects/WebTranslation/app/src/main/res/layout/activity_main.xml" value="0.20567375886524822" />
@@ -37,7 +34,6 @@
         <entry key="..\:/Users/wo747/AndroidStudioProjects/WebTranslation/app/src/main/res/layout/appbar.xml" value="0.20567375886524822" />
         <entry key="..\:/Users/wo747/AndroidStudioProjects/WebTranslation/app/src/main/res/layout/card_view.xml" value="0.22" />
         <entry key="..\:/Users/wo747/AndroidStudioProjects/WebTranslation/app/src/main/res/layout/content_main.xml" value="0.207193515704154" />
-        <entry key="..\:/Users/wo747/AndroidStudioProjects/WebTranslation/app/src/main/res/layout/dialog_progress.xml" value="0.2848731884057971" />
         <entry key="..\:/Users/wo747/AndroidStudioProjects/WebTranslation/app/src/main/res/layout/fragment_1.xml" value="0.20567375886524822" />
         <entry key="..\:/Users/wo747/AndroidStudioProjects/WebTranslation/app/src/main/res/layout/fragment_dictionary.xml" value="0.225177304964539" />
         <entry key="..\:/Users/wo747/AndroidStudioProjects/WebTranslation/app/src/main/res/layout/fragment_gallery.xml" value="0.20567375886524822" />

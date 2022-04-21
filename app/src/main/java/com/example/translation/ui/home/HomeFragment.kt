@@ -1,13 +1,10 @@
 package com.example.translation.ui.home
 
 import android.annotation.SuppressLint
+import android.app.LauncherActivity.ListItem
 import android.content.Intent
 import android.content.res.AssetManager
-import android.graphics.Bitmap
-import android.graphics.drawable.ColorDrawable
 import android.os.Bundle
-import android.os.ParcelFileDescriptor
-import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -20,7 +17,7 @@ import com.developer.filepicker.model.DialogProperties
 import com.developer.filepicker.view.FilePickerDialog
 import com.example.translation.MainActivity
 import com.example.translation.databinding.FragmentHomeBinding
-import com.shockwave.pdfium.PdfiumCore
+import com.viliussutkus89.android.pdf2htmlex.pdf2htmlEX
 import kotlinx.android.synthetic.main.fragment_home.*
 import java.io.File
 
@@ -33,7 +30,6 @@ class HomeFragment : Fragment(), LifecycleObserver{
     lateinit var assetManager: AssetManager
     var text: String = ""
     private val binding get() = _binding!!
-    lateinit var customProgressDialog: ProgressDialog
 
     @SuppressLint("SdCardPath", "SetJavaScriptEnabled")
     override fun onCreateView(
@@ -51,10 +47,6 @@ class HomeFragment : Fragment(), LifecycleObserver{
     override fun onActivityCreated(savedInstanceState: Bundle?) {
         super.onActivityCreated(savedInstanceState)
 
-        customProgressDialog = ProgressDialog(requireContext())
-        customProgressDialog.window?.setBackgroundDrawable(ColorDrawable(android.graphics.Color.TRANSPARENT))
-
-
         webBtn1.setOnClickListener {
             val properties : DialogProperties = DialogProperties()
             properties.selection_mode = DialogConfigs.SINGLE_MODE
@@ -62,7 +54,7 @@ class HomeFragment : Fragment(), LifecycleObserver{
             properties.root = File(DialogConfigs.DEFAULT_DIR)
             properties.error_dir = File(DialogConfigs.DEFAULT_DIR)
             properties.offset = File(DialogConfigs.DEFAULT_DIR)
-            properties.extensions = arrayOf("png","jpg")
+            properties.extensions = null
             properties.show_hidden_files = true
 
             val dialog = FilePickerDialog(context,properties)
@@ -75,7 +67,6 @@ class HomeFragment : Fragment(), LifecycleObserver{
                 var file_dirs : String = ""
                 var file_name : String = ""
                 var file_names : String = ""
-                var extensions : String = ""
                 var index : Int = 0
                 var index2 : Int = 0
 
@@ -84,37 +75,17 @@ class HomeFragment : Fragment(), LifecycleObserver{
                     file_name = file.name
                     index2 = file_name.lastIndexOf(".")
                     file_names = file_name.substring(0,index2)
-                    extensions = file_name.substring(index2+1,file_name.length)
 
                     file_dir = file.absolutePath
                     index = file_dir.lastIndexOf("/")
                     file_dirs = file_dir.substring(0,index+1)
                 }
 
-                customProgressDialog.show()
-                if(extensions == "docx"){
-                    val intent = Intent(requireContext(),DocsActivity::class.java)
-                    startActivity(intent)
-                    customProgressDialog.dismiss();
-                }
-                else {
-                    customProgressDialog.show()
-                    val intent = Intent(requireContext(),TImageActivity::class.java)
-                    intent.putExtra("file_dirs",file_dirs)
-                    intent.putExtra("file_name",file_name)
-                    intent.putExtra("file_names",file_names)
-                    startActivity(intent)
-                    customProgressDialog.dismiss();
-                }
-
-                /*
                 val intent = Intent(requireContext(),TImageActivity::class.java)
                 intent.putExtra("file_dir",file_dirs)
                 intent.putExtra("file_name",file_name)
                 intent.putExtra("file_names",file_names)
                 startActivity(intent)
-
-                 */
 
                 /*
 
@@ -132,6 +103,13 @@ class HomeFragment : Fragment(), LifecycleObserver{
             }
 
             dialog.show()
+        }
+
+        webBtn2.setOnClickListener{
+            val intent = Intent(requireContext(),TImageActivity::class.java)
+            //intent.putExtra("PdfFile",tmp)
+            //intent.putExtra("File",outputHTML.toString())
+            startActivity(intent)
         }
     }
 

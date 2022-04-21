@@ -23,10 +23,7 @@
         android:theme="@style/Theme.MaterialComponents.Light.NoActionBar"
         android:usesCleartextTraffic="true"
         tools:targetApi="s">
-        <activity
-            android:name=".ui.home.DocsActivity"
-            android:exported="false" />
-        <activity android:name=".ui.home.TImageActivity" />
+        <activity android:name=".ui.home.TImageActivity"/>
         <activity
             android:name=".MainActivity"
             android:exported="true"
