@@ -88,8 +88,8 @@ dependencies {
     implementation 'androidx.legacy:legacy-support-v4:1.0.0'
     implementation 'androidx.lifecycle:lifecycle-livedata-ktx:2.4.1'
     implementation 'androidx.lifecycle:lifecycle-viewmodel-ktx:2.4.1'
-    implementation 'androidx.navigation:navigation-fragment-ktx:2.4.1'
-    implementation 'androidx.navigation:navigation-ui-ktx:2.4.1'
+    implementation 'androidx.navigation:navigation-fragment-ktx:2.4.2'
+    implementation 'androidx.navigation:navigation-ui-ktx:2.4.2'
     implementation 'androidx.preference:preference-ktx:1.2.0'
     implementation 'com.github.dhaval2404:colorpicker:2.0'
     implementation 'com.github.skydoves:colorpickerpreference:2.0.6'
@@ -137,7 +137,7 @@ dependencies {
 
     implementation 'com.github.TutorialsAndroid:FilePicker:v8.0.19'
 
-    implementation 'com.viliussutkus89:pdf2htmlex-android:0.18.16'
+    implementation 'com.github.barteksc:android-pdf-viewer:3.2.0-beta.1'
 
     implementation 'com.tom-roush:pdfbox-android:2.0.18.0'
 

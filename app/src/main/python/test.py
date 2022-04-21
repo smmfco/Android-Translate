@@ -32,7 +32,5 @@ def translate(doc_dir,file_name,efile_name):
     imageStr = resObj.get("data").get("renderedImage")
     imgdata = base64.b64decode(imageStr)
 
-    files_dir = str(Python.getPlatform().getApplication().getExternalFilesDir(""))
-    filenames = join(dirname(files_dir),efile_name+"_translate.png")
-    with open(filenames, 'wb') as f:
-        f.write(imgdata)
+    return imageStr
+

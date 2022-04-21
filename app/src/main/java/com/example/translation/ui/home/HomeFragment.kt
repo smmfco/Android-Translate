@@ -1,23 +1,23 @@
 package com.example.translation.ui.home
 
 import android.annotation.SuppressLint
-import android.app.LauncherActivity.ListItem
 import android.content.Intent
 import android.content.res.AssetManager
+import android.graphics.Bitmap
 import android.os.Bundle
+import android.os.ParcelFileDescriptor
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.webkit.WebSettings
-import android.widget.Toast
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.LifecycleObserver
 import com.developer.filepicker.model.DialogConfigs
 import com.developer.filepicker.model.DialogProperties
 import com.developer.filepicker.view.FilePickerDialog
-import com.example.translation.MainActivity
 import com.example.translation.databinding.FragmentHomeBinding
-import com.viliussutkus89.android.pdf2htmlex.pdf2htmlEX
+import com.shockwave.pdfium.PdfiumCore
 import kotlinx.android.synthetic.main.fragment_home.*
 import java.io.File
 
@@ -82,10 +82,20 @@ class HomeFragment : Fragment(), LifecycleObserver{
                 }
 
                 val intent = Intent(requireContext(),TImageActivity::class.java)
+                intent.putExtra("file_dir",file_dir)
+                intent.putExtra("file_dirs",file_dirs)
+                intent.putExtra("file_name",file_name)
+                intent.putExtra("file_names",file_names)
+                startActivity(intent)
+
+                /*
+                val intent = Intent(requireContext(),TImageActivity::class.java)
                 intent.putExtra("file_dir",file_dirs)
                 intent.putExtra("file_name",file_name)
                 intent.putExtra("file_names",file_names)
                 startActivity(intent)
+
+                 */
 
                 /*
 
