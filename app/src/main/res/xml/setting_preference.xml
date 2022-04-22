@@ -48,6 +48,17 @@
             app:preference_dialog_positive="확인"
             app:preference_dialog_title="배경 색 다이얼로그"
             app:preference_selector="@drawable/wheel" />
+    </PreferenceCategory>
 
+    <PreferenceCategory android:title="문서 번역 설정">
+        <EditTextPreference
+            android:key="edit_value"
+            android:title="문서 파일 저장 위치" />
+
+        <ListPreference
+            android:entries="@array/array_setting3"
+            android:entryValues="@array/array_setting3"
+            android:key="image_extension"
+            android:title="이미지 저장 시 확장자"/>
     </PreferenceCategory>
 </PreferenceScreen>

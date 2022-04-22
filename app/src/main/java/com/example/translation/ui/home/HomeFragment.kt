@@ -11,6 +11,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.webkit.WebSettings
+import android.widget.Toast
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.LifecycleObserver
 import com.developer.filepicker.model.DialogConfigs
@@ -67,6 +68,7 @@ class HomeFragment : Fragment(), LifecycleObserver{
                 var file_dirs : String = ""
                 var file_name : String = ""
                 var file_names : String = ""
+                var extensions : String = ""
                 var index : Int = 0
                 var index2 : Int = 0
 
@@ -75,18 +77,24 @@ class HomeFragment : Fragment(), LifecycleObserver{
                     file_name = file.name
                     index2 = file_name.lastIndexOf(".")
                     file_names = file_name.substring(0,index2)
+                    extensions = file_name.substring(index2+1,file_name.length)
 
                     file_dir = file.absolutePath
                     index = file_dir.lastIndexOf("/")
                     file_dirs = file_dir.substring(0,index+1)
                 }
 
-                val intent = Intent(requireContext(),TImageActivity::class.java)
-                intent.putExtra("file_dir",file_dir)
-                intent.putExtra("file_dirs",file_dirs)
-                intent.putExtra("file_name",file_name)
-                intent.putExtra("file_names",file_names)
-                startActivity(intent)
+                if(extensions == "docx"){
+                    val intent = Intent(requireContext(),DocsActivity::class.java)
+                    startActivity(intent)
+                }
+                else {
+                    val intent = Intent(requireContext(),TImageActivity::class.java)
+                    intent.putExtra("file_dirs",file_dirs)
+                    intent.putExtra("file_name",file_name)
+                    intent.putExtra("file_names",file_names)
+                    startActivity(intent)
+                }
 
                 /*
                 val intent = Intent(requireContext(),TImageActivity::class.java)
