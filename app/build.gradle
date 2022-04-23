@@ -29,6 +29,7 @@ android {
             pip{
                 install "requests"
                 install "requests_toolbelt"
+                install "urllib3"
             }
         }
         sourceSets {
