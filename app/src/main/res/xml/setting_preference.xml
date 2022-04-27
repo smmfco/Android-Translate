@@ -12,7 +12,6 @@
             app:preference_colorBox_radius="26dp"
             app:preference_dialog_negative="취소"
             app:preference_dialog_positive="확인"
-            app:preference_dialog_title="배경 색 다이얼로그"
             app:preference_selector="@drawable/wheel" />
 
         <com.skydoves.colorpickerpreference.ColorPickerPreference
@@ -23,7 +22,6 @@
             app:preference_colorBox_radius="26dp"
             app:preference_dialog_negative="취소"
             app:preference_dialog_positive="확인"
-            app:preference_dialog_title="문자 색 다이얼로그"
             app:preference_selector="@drawable/wheel" />
 
         <ListPreference
@@ -46,7 +44,6 @@
             app:preference_colorBox_radius="26dp"
             app:preference_dialog_negative="취소"
             app:preference_dialog_positive="확인"
-            app:preference_dialog_title="배경 색 다이얼로그"
             app:preference_selector="@drawable/wheel" />
     </PreferenceCategory>
 
@@ -54,6 +51,12 @@
         <EditTextPreference
             android:key="edit_value"
             android:title="문서 파일 저장 위치" />
+
+        <ListPreference
+            android:entries="@array/array_setting4"
+            android:entryValues="@array/array_setting4"
+            android:key="image_targetLanguage"
+            android:title="이미지 파일 번역 언어"/>
 
         <ListPreference
             android:entries="@array/array_setting3"

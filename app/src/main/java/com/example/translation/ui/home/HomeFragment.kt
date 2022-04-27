@@ -4,6 +4,7 @@ import android.annotation.SuppressLint
 import android.content.Intent
 import android.content.res.AssetManager
 import android.graphics.Bitmap
+import android.graphics.drawable.ColorDrawable
 import android.os.Bundle
 import android.os.ParcelFileDescriptor
 import android.util.Log
@@ -17,6 +18,7 @@ import androidx.lifecycle.LifecycleObserver
 import com.developer.filepicker.model.DialogConfigs
 import com.developer.filepicker.model.DialogProperties
 import com.developer.filepicker.view.FilePickerDialog
+import com.example.translation.MainActivity
 import com.example.translation.databinding.FragmentHomeBinding
 import com.shockwave.pdfium.PdfiumCore
 import kotlinx.android.synthetic.main.fragment_home.*
@@ -31,6 +33,7 @@ class HomeFragment : Fragment(), LifecycleObserver{
     lateinit var assetManager: AssetManager
     var text: String = ""
     private val binding get() = _binding!!
+    lateinit var customProgressDialog: ProgressDialog
 
     @SuppressLint("SdCardPath", "SetJavaScriptEnabled")
     override fun onCreateView(
@@ -48,6 +51,10 @@ class HomeFragment : Fragment(), LifecycleObserver{
     override fun onActivityCreated(savedInstanceState: Bundle?) {
         super.onActivityCreated(savedInstanceState)
 
+        customProgressDialog = ProgressDialog(requireContext())
+        customProgressDialog.window?.setBackgroundDrawable(ColorDrawable(android.graphics.Color.TRANSPARENT))
+
+
         webBtn1.setOnClickListener {
             val properties : DialogProperties = DialogProperties()
             properties.selection_mode = DialogConfigs.SINGLE_MODE
@@ -55,7 +62,7 @@ class HomeFragment : Fragment(), LifecycleObserver{
             properties.root = File(DialogConfigs.DEFAULT_DIR)
             properties.error_dir = File(DialogConfigs.DEFAULT_DIR)
             properties.offset = File(DialogConfigs.DEFAULT_DIR)
-            properties.extensions = null
+            properties.extensions = arrayOf("png","jpg")
             properties.show_hidden_files = true
 
             val dialog = FilePickerDialog(context,properties)
@@ -84,16 +91,20 @@ class HomeFragment : Fragment(), LifecycleObserver{
                     file_dirs = file_dir.substring(0,index+1)
                 }
 
+                customProgressDialog.show()
                 if(extensions == "docx"){
                     val intent = Intent(requireContext(),DocsActivity::class.java)
                     startActivity(intent)
+                    customProgressDialog.dismiss();
                 }
                 else {
+                    customProgressDialog.show()
                     val intent = Intent(requireContext(),TImageActivity::class.java)
                     intent.putExtra("file_dirs",file_dirs)
                     intent.putExtra("file_name",file_name)
                     intent.putExtra("file_names",file_names)
                     startActivity(intent)
+                    customProgressDialog.dismiss();
                 }
 
                 /*
@@ -121,13 +132,6 @@ class HomeFragment : Fragment(), LifecycleObserver{
             }
 
             dialog.show()
-        }
-
-        webBtn2.setOnClickListener{
-            val intent = Intent(requireContext(),TImageActivity::class.java)
-            //intent.putExtra("PdfFile",tmp)
-            //intent.putExtra("File",outputHTML.toString())
-            startActivity(intent)
         }
     }
 

@@ -7,23 +7,23 @@ import androidx.preference.PreferenceFragmentCompat
 import androidx.preference.PreferenceManager
 import com.example.translation.MainActivity
 import com.example.translation.R
-import com.github.angads25.filepicker.view.FilePickerPreference
+import com.example.translation.pref
 
 class SettingFragment : PreferenceFragmentCompat() {
     lateinit var mainActivity: MainActivity
     lateinit var prefs : SharedPreferences
     var borderthickPreference : Preference? = null
     var borderstylePreference : Preference? = null
+    var imageTLanguage : Preference? = null
     var imageExPreference : Preference? = null
 
     override fun onCreatePreferences(savedInstanceState: Bundle?, rootKey: String?) {
         setPreferencesFromResource(R.xml.setting_preference,rootKey)
 
-        (activity as MainActivity).hideFloatingActionButton()
-
         mainActivity = context as MainActivity
         borderthickPreference = findPreference("border_thick")
         borderstylePreference = findPreference("border_style")
+        imageTLanguage = findPreference("image_targetLanguage")
         imageExPreference = findPreference("image_extension")
 
         prefs = PreferenceManager.getDefaultSharedPreferences(mainActivity)
@@ -34,6 +34,10 @@ class SettingFragment : PreferenceFragmentCompat() {
 
         if(prefs.getString("border_style","") != ""){
             borderstylePreference?.summary = prefs.getString("border_style","solid")
+        }
+
+        if(prefs.getString("image_targetLanguage","") != ""){
+            imageTLanguage?.summary = prefs.getString("image_targetLanguage","en")
         }
 
         if(prefs.getString("image_extension","") != ""){
@@ -50,6 +54,10 @@ class SettingFragment : PreferenceFragmentCompat() {
             "border_style" -> {
                 val summary = prefs.getString("border_style","solid")
                 borderstylePreference?.summary = summary
+            }
+            "image_targetLanguage" -> {
+                val summary = prefs.getString("image_targetLanguage","en")
+                imageTLanguage?.summary = summary
             }
             "image_extension" -> {
                 val summary = prefs.getString("image_extension","png")
@@ -82,6 +90,5 @@ class SettingFragment : PreferenceFragmentCompat() {
 
     override fun onDestroy() {
         super.onDestroy()
-        (activity as MainActivity).showFloatingActionButton()
     }
 }
