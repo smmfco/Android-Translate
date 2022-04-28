@@ -1,29 +1,32 @@
 package com.example.translation.ui.home
 
+import android.annotation.SuppressLint
+import android.content.ContentValues
+import android.content.Intent
 import android.graphics.Bitmap
 import android.graphics.BitmapFactory
 import android.net.Uri
+import android.os.Build
 import android.os.Bundle
 import android.os.Environment
-import android.os.ParcelFileDescriptor
-import android.os.PersistableBundle
+import android.provider.MediaStore
+import android.provider.Settings
 import android.util.Base64
-import android.util.Log
-import android.widget.Toast
+import androidx.annotation.RequiresApi
 import androidx.appcompat.app.AppCompatActivity
 import androidx.preference.PreferenceManager
 import com.chaquo.python.PyObject
 import com.chaquo.python.Python
 import com.chaquo.python.android.AndroidPlatform
 import com.example.translation.R
-import com.example.translation.pref4
-import com.shockwave.pdfium.PdfiumCore
 import kotlinx.android.synthetic.main.activity_timage.*
 import java.io.*
-import java.lang.Exception
+import java.util.*
 
 
 class TImageActivity : AppCompatActivity() {
+    @SuppressLint("InlinedApi")
+    @RequiresApi(Build.VERSION_CODES.Q)
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_timage)
@@ -49,23 +52,5 @@ class TImageActivity : AppCompatActivity() {
         val inStream : ByteArrayInputStream = ByteArrayInputStream(bytePlainOrg)
         val bm : Bitmap = BitmapFactory.decodeStream(inStream)
         trImageView.setImageBitmap(bm)
-    }
-
-    private fun saveBitmapAsPng(bmp : Bitmap, strFilePath : String, fileName : String){
-        val f = File(strFilePath)
-        f.mkdirs()
-        try{
-            f.createNewFile()
-            val out : FileOutputStream = FileOutputStream(f.path+"/"+fileName)
-            val bufferOutput : BufferedOutputStream = BufferedOutputStream(out)
-            bmp.compress(Bitmap.CompressFormat.PNG,100,bufferOutput)
-            bufferOutput.flush()
-            bufferOutput.close()
-            out.close()
-        }catch (e : FileNotFoundException){
-            e.printStackTrace()
-        }catch (e : IOException){
-            e.printStackTrace()
-        }
     }
 }
