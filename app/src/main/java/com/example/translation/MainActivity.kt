@@ -257,11 +257,15 @@ class MainActivity : AppCompatActivity() {
                 //             "   return textString;\n" +
                 //             "})()"
                 "javascript:(function getPTagText99(){\n" +
-                        "   var tagP = document.getElementsByTagName('p');\n" +
-                        "   return tagP.length;\n" +
+                        "   var tagP = document.getElementsByTagName('li');\n" +
+                        "   var textString = tagP[$tagLiIndex].innerText; \n" +
+                        "   var cord = tagP[$tagLiIndex].getBoundingClientRect(); \n" +
+                        "   return cord.y;\n" +
+                        //  "   return textString;\n" +
                         "})()"
             ){value->
                 Toast.makeText(applicationContext , value.toString() , Toast.LENGTH_SHORT).show()
+                //tagLiIndex += 1
             }
             return@setOnMenuItemClickListener true
         }
@@ -281,6 +285,7 @@ class MainActivity : AppCompatActivity() {
                             "   return window.innerHeight;\n" +
                             "})()"
                 ){value ->  innerWindowHeight = value.toInt()
+                    //Toast.makeText(applicationContext , innerWindowHeight.toString() , Toast.LENGTH_SHORT).show()
                 }
 
                 Toast.makeText(applicationContext , "번역 ON" , Toast.LENGTH_SHORT).show()
@@ -358,85 +363,90 @@ class MainActivity : AppCompatActivity() {
     }
 
     val handler = Handler()
-    val millisTime = 500
+    val millisTime = 100
     val handlerTask = object : Runnable {
         override fun run() {
             // do task
-            if (translateOn && fullTranslateMode && maxTagPIndex != 0) {
+            if (translateOn && fullTranslateMode ) {
                 val cusWebView2 = findViewById<WebView>(R.id.webView)
-                do {
-                    var translateSuccess = false
-                    // scrollYCheck = scrollY+50
-                    cusWebView2.evaluateJavascript(
-                        "javascript:(function getPTagText2(){\n" +
-                                // "   var wrapper = document.querySelector('#wrap');\n" +
-                                // "   var lists = wrapper.querySelector('#p');\n" +
-                                "   var tagP = document.getElementsByTagName('p');\n" +
-                                // "   var tagP = ${values.htmlEncode()};\n" +
-                                //"   console.log(tag_p[0]);\n"+
-                                //"   return tagP[1].innerHTML;\n" +
-                                "   var cord = tagP[$tagPIndex].getBoundingClientRect(); \n" +
-                                "   return cord.y;\n" +
-                                "})()"
-                    ) { value ->
-                        if (tagPIndex < maxTagPIndex && value.toFloat() < 200) {//innerWindowHeight){
-                            tagPIndex += 1
-                            translateSuccess = true
-                            cusWebView2.evaluateJavascript(
-                                "javascript:(function getPTagText3(){\n" +
-                                        "   var tagP = document.getElementsByTagName('p');\n" +
-                                        "   var textString = tagP[$tagPIndex].innerText; \n" +
-                                        "   return textString;\n" +
-                                        "})()"
-                            ) { value ->
-                                val str = value.substring(1 , value.toString().length - 1)
-                                val translateTask = ApiTranslateNmt(str).execute().get()
-                                //val translateTask = str
-
-                                // val inputText = "<div>$translateTask</div>"
-                                //Toast.makeText(applicationContext , tagPIndex.toString() , Toast.LENGTH_SHORT).show()
-                                //Toast.makeText(applicationContext, translateTask+tagPIndex.toString(), Toast.LENGTH_SHORT).show()
-                                //val translateTask = ApiTranslateNmt(str).execute().get()
-                                //Toast.makeText(applicationContext , str , Toast.LENGTH_SHORT).show()
+                var translateSuccess = false
+                if(maxTagPIndex != 0) {
+                    do {
+                        translateSuccess = false
+                        // scrollYCheck = scrollY+50
+                        cusWebView2.evaluateJavascript(
+                            "javascript:(function getPTagText2(){\n" +
+                                    // "   var wrapper = document.querySelector('#wrap');\n" +
+                                    // "   var lists = wrapper.querySelector('#p');\n" +
+                                    "   var tagP = document.getElementsByTagName('p');\n" +
+                                    // "   var tagP = ${values.htmlEncode()};\n" +
+                                    //"   console.log(tag_p[0]);\n"+
+                                    //"   return tagP[1].innerHTML;\n" +
+                                    "   var cord = tagP[$tagPIndex].getBoundingClientRect(); \n" +
+                                    "   return cord.y;\n" +
+                                    "})()"
+                        ) { value ->
+                            if (tagPIndex < maxTagPIndex && value.toFloat() < innerWindowHeight) {//innerWindowHeight){
+                                tagPIndex += 1
+                                translateSuccess = true
                                 cusWebView2.evaluateJavascript(
-                                    "javascript:(function translateText(){\n" +
+                                    "javascript:(function getPTagText3(){\n" +
                                             "   var tagP = document.getElementsByTagName('p');\n" +
-                                            "   const newDiv = document.createElement('div');\n" +
-                                            // "   newDiv.style.color = 'blue' ;\n"+
-                                            "   newDiv.style.backgroundColor = \"$hexColor\";\n" +
-                                            "   newDiv.style.color = \"$hexColor2\";\n" +
-                                            "   newDiv.style.border = \"$pref4 $pref5 $hexColor3\";\n" +
-                                            "   newDiv.style.borderRadius = \"25px\";\n" +
-                                            "   const newText = document.createTextNode(\"${translateTask}\");\n" +
-                                            "   newDiv.appendChild(newText);\n" +
-                                            "   tagP[$tagPIndex].appendChild(newDiv);\n" +
-                                            // "   tagP[$tagPIndex].innerHTML += '${inputText}'; \n"+
-                                            // "   tagP[$tagPIndex].append($translateTask)\n" + //"${translateTask}"
-                                            "})()" , null
-                                )
+                                            "   var textString = tagP[$tagPIndex].innerText; \n" +
+                                            "   return textString;\n" +
+                                            "})()"
+                                ) { value ->
+                                    val str = value.substring(1 , value.toString().length - 1)
+                                    val translateTask = ApiTranslateNmt(str).execute().get()
+                                    //val translateTask = str
+                                    //Toast.makeText(applicationContext , "$value" , Toast.LENGTH_SHORT).show()
+                                    // val inputText = "<div>$translateTask</div>"
+                                    //Toast.makeText(applicationContext , tagPIndex.toString() , Toast.LENGTH_SHORT).show()
+                                    //Toast.makeText(applicationContext, translateTask+tagPIndex.toString(), Toast.LENGTH_SHORT).show()
+                                    //val translateTask = ApiTranslateNmt(str).execute().get()
+                                    //Toast.makeText(applicationContext , str , Toast.LENGTH_SHORT).show()
+                                    cusWebView2.evaluateJavascript(
+                                        "javascript:(function translateText(){\n" +
+                                                "   var tagP = document.getElementsByTagName('p');\n" +
+                                                "   const newDiv = document.createElement('div');\n" +
+                                                // "   newDiv.style.color = 'blue' ;\n"+
+                                                "   newDiv.style.backgroundColor = \"$hexColor\";\n" +
+                                                "   newDiv.style.color = \"$hexColor2\";\n" +
+                                                "   newDiv.style.border = \"$pref4 $pref5 $hexColor3\";\n" +
+                                                "   newDiv.style.borderRadius = \"25px\";\n" +
+                                                "   const newText = document.createTextNode(\"${translateTask}\");\n" +
+                                                "   newDiv.appendChild(newText);\n" +
+                                                "   tagP[$tagPIndex].appendChild(newDiv);\n" +
+                                                // "   tagP[$tagPIndex].innerHTML += '${inputText}'; \n"+
+                                                // "   tagP[$tagPIndex].append($translateTask)\n" + //"${translateTask}"
+                                                "})()" , null
+                                    )
 
+                                }
+                                /*
+                                cusWebView2.evaluateJavascript(
+                                    "javascript:(function getPTagText(){\n" +
+                                            // "   var wrapper = document.querySelector('#wrap');\n" +
+                                            // "   var lists = wrapper.querySelector('#p');\n" +
+                                            "   var tagP = document.getElementsByTagName('p');\n" +
+                                            //"   console.log(tag_p[0]);\n"+
+                                            //"   return tagP[1].innerHTML;\n" +
+                                            "   tagP[1].append(\"Hello\");\n" +
+                                            //"   var cord = tagP[1].getBoundingClientRect()\n" +
+                                            //"   return cord.y;\n" +
+                                            "})()",null
+
+                                )*/
+
+                                //oldTagPIndex += 1
                             }
-                            /*
-                            cusWebView2.evaluateJavascript(
-                                "javascript:(function getPTagText(){\n" +
-                                        // "   var wrapper = document.querySelector('#wrap');\n" +
-                                        // "   var lists = wrapper.querySelector('#p');\n" +
-                                        "   var tagP = document.getElementsByTagName('p');\n" +
-                                        //"   console.log(tag_p[0]);\n"+
-                                        //"   return tagP[1].innerHTML;\n" +
-                                        "   tagP[1].append(\"Hello\");\n" +
-                                        //"   var cord = tagP[1].getBoundingClientRect()\n" +
-                                        //"   return cord.y;\n" +
-                                        "})()",null
-
-                            )*/
-
-                            //oldTagPIndex += 1
+                            // Toast.makeText(applicationContext , "$value&$innerWindowHeight" , Toast.LENGTH_SHORT).show()
                         }
-                        // Toast.makeText(applicationContext , "$value&$innerWindowHeight" , Toast.LENGTH_SHORT).show()
-                    }
-                } while (translateSuccess)
+                    } while (translateSuccess)
+                }
+
                 //----a---!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!//
+                /*
                 do {
                     var translateSuccess = false
                     cusWebView2.evaluateJavascript(
@@ -456,6 +466,7 @@ class MainActivity : AppCompatActivity() {
                                         "   return textString;\n" +
                                         "})()"
                             ) { value ->
+                                Toast.makeText(applicationContext , "$value" , Toast.LENGTH_SHORT).show()
                                 val str = value.substring(1 , value.toString().length - 1)
                                 val translateTask = ApiTranslateNmt(str).execute().get()
                                 //val translateTask = str
@@ -475,89 +486,92 @@ class MainActivity : AppCompatActivity() {
                             }
                         }
                     }
-                } while (translateSuccess)
+                } while (translateSuccess)*/
                 //----Strong---!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!//
-                do{
-                    var translateSuccess = false
-                    cusWebView2.evaluateJavascript(
-                        "javascript:(function getPTagText2(){\n" +
-                                "   var tagP = document.getElementsByTagName('strong');\n" +
-                                "   var cord = tagP[$tagStrongIndex].getBoundingClientRect(); \n" +
-                                "   return cord.y;\n" +
-                                "})()"
-                    ) { value ->
-                        if(tagStrongIndex < maxTagStrongIndex && value.toFloat() < 200){//innerWindowHeight){
-                            tagStrongIndex += 1
-                            translateSuccess = true
-                            cusWebView2.evaluateJavascript(
-                                "javascript:(function getPTagText3(){\n" +
-                                        "   var tagP = document.getElementsByTagName('strong');\n" +
-                                        "   var textString = tagP[$tagStrongIndex].innerText; \n" +
-                                        "   return textString;\n" +
-                                        "})()"
-                            ){ value ->
-                                val str = value.substring(1, value.toString().length-1)
-                                val translateTask = ApiTranslateNmt(str).execute().get()
-                                //val translateTask = str
+                if(maxTagStrongIndex != 0) {
+                    do{
+                        translateSuccess = false
+                        cusWebView2.evaluateJavascript(
+                            "javascript:(function getStrongTagText2(){\n" +
+                                    "   var tagP = document.getElementsByTagName('strong');\n" +
+                                    "   var cord = tagP[$tagStrongIndex].getBoundingClientRect(); \n" +
+                                    "   return cord.y;\n" +
+                                    "})()"
+                        ) { value ->
+                            if(tagStrongIndex < maxTagStrongIndex && value.toFloat() < innerWindowHeight){//innerWindowHeight){
+                                tagStrongIndex += 1
+                                translateSuccess = true
                                 cusWebView2.evaluateJavascript(
-                                    "javascript:(function translateText(){\n" +
+                                    "javascript:(function getStrongTagText3(){\n" +
                                             "   var tagP = document.getElementsByTagName('strong');\n" +
-                                            "   const newDiv = document.createElement('div');\n"+
-                                            "   newDiv.style.backgroundColor = \"$hexColor\";\n" +
-                                            "   newDiv.style.color = \"$hexColor2\";\n" +
-                                            "   newDiv.style.border = \"$pref4 $pref5 $hexColor3\";\n" +
-                                            "   newDiv.style.borderRadius = \"25px\";\n" +
-                                            "   const newText = document.createTextNode(\"${translateTask}\");\n"+
-                                            "   newDiv.appendChild(newText);\n"+
-                                            "   tagP[$tagStrongIndex].appendChild(newDiv);\n"+
-                                            "})()", null
-                                )
+                                            "   var textString = tagP[$tagStrongIndex].innerText; \n" +
+                                            "   return textString;\n" +
+                                            "})()"
+                                ){ value ->
+                                    val str = value.substring(1, value.toString().length-1)
+                                    val translateTask = ApiTranslateNmt(str).execute().get()
+                                    //val translateTask = str
+                                    cusWebView2.evaluateJavascript(
+                                        "javascript:(function translateText2(){\n" +
+                                                "   var tagP = document.getElementsByTagName('strong');\n" +
+                                                "   const newDiv = document.createElement('div');\n"+
+                                                "   newDiv.style.backgroundColor = \"$hexColor\";\n" +
+                                                "   newDiv.style.color = \"$hexColor2\";\n" +
+                                                "   newDiv.style.border = \"$pref4 $pref5 $hexColor3\";\n" +
+                                                "   newDiv.style.borderRadius = \"25px\";\n" +
+                                                "   const newText = document.createTextNode(\"${translateTask}\");\n"+
+                                                "   newDiv.appendChild(newText);\n"+
+                                                "   tagP[$tagStrongIndex].appendChild(newDiv);\n"+
+                                                "})()", null
+                                    )
+                                }
                             }
                         }
-                    }
-                } while (translateSuccess)
+                    } while (translateSuccess)
+                }
                 //----Li li--!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!//
-                do{
-                    var translateSuccess = false
-                    cusWebView2.evaluateJavascript(
-                        "javascript:(function getPTagText2(){\n" +
-                                "   var tagP = document.getElementsByTagName('li');\n" +
-                                "   var cord = tagP[$tagLiIndex].getBoundingClientRect(); \n" +
-                                "   return cord.y;\n" +
-                                "})()"
-                    ) { value ->
-                        if(tagLiIndex < maxTagLiIndex && value.toFloat() < 200){//innerWindowHeight){
-                            tagLiIndex += 1
-                            translateSuccess = true
-                            cusWebView2.evaluateJavascript(
-                                "javascript:(function getPTagText3(){\n" +
-                                        "   var tagP = document.getElementsByTagName('li');\n" +
-                                        "   var textString = tagP[$tagLiIndex].innerText; \n" +
-                                        "   return textString;\n" +
-                                        "})()"
-                            ){ value ->
-                                val str = value.substring(1, value.toString().length-1)
-                                val translateTask = ApiTranslateNmt(str).execute().get()
-                                //val translateTask = str
+                if(maxTagLiIndex != 0) {
+                    do{
+                        translateSuccess = false
+                        cusWebView2.evaluateJavascript(
+                            "javascript:(function getPTagText2(){\n" +
+                                    "   var tagP = document.getElementsByTagName('li');\n" +
+                                    "   var cord = tagP[$tagLiIndex].getBoundingClientRect(); \n" +
+                                    "   return cord.y;\n" +
+                                    "})()"
+                        ) { value ->
+                            if(tagLiIndex < maxTagLiIndex && value.toFloat() < innerWindowHeight){//innerWindowHeight){
+                                tagLiIndex += 1
+                                translateSuccess = true
                                 cusWebView2.evaluateJavascript(
-                                    "javascript:(function translateText(){\n" +
+                                    "javascript:(function getPTagText3(){\n" +
                                             "   var tagP = document.getElementsByTagName('li');\n" +
-                                            "   const newDiv = document.createElement('div');\n"+
-                                            "   newDiv.style.backgroundColor = \"$hexColor\";\n" +
-                                            "   newDiv.style.color = \"$hexColor2\";\n" +
-                                            "   newDiv.style.border = \"$pref4 $pref5 $hexColor3\";\n" +
-                                            "   newDiv.style.borderRadius = \"25px\";\n" +
-                                            "   const newText = document.createTextNode(\"${translateTask}\");\n"+
-                                            "   newDiv.appendChild(newText);\n"+
-                                            "   tagP[$tagLiIndex].appendChild(newDiv);\n"+
-                                            "})()", null
-                                )
+                                            "   var textString = tagP[$tagLiIndex].innerText; \n" +
+                                            "   return textString;\n" +
+                                            "})()"
+                                ){ value ->
+                                    //Toast.makeText(applicationContext , "$value" , Toast.LENGTH_SHORT).show()
+                                    val str = value.substring(1, value.toString().length-1)
+                                    val translateTask = ApiTranslateNmt(str).execute().get()
+                                    //val translateTask = str
+                                    cusWebView2.evaluateJavascript(
+                                        "javascript:(function translateText(){\n" +
+                                                "   var tagP = document.getElementsByTagName('li');\n" +
+                                                "   const newDiv = document.createElement('div');\n"+
+                                                "   newDiv.style.backgroundColor = \"$hexColor\";\n" +
+                                                "   newDiv.style.color = \"$hexColor2\";\n" +
+                                                "   newDiv.style.border = \"$pref4 $pref5 $hexColor3\";\n" +
+                                                "   newDiv.style.borderRadius = \"25px\";\n" +
+                                                "   const newText = document.createTextNode(\"${translateTask}\");\n"+
+                                                "   newDiv.appendChild(newText);\n"+
+                                                "   tagP[$tagLiIndex].appendChild(newDiv);\n"+
+                                                "})()", null
+                                    )
+                                }
                             }
                         }
-                    }
-                } while (translateSuccess)
-
-
+                    } while (translateSuccess)
+                }
                 //----------------------------------------//
             }
             translateOn = false
