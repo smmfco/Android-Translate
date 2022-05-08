@@ -1,0 +1,88 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:card_view="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context=".ui.home.HomeFragment">
+
+    <ImageView
+        android:id="@+id/imageView2"
+        android:layout_width="100dp"
+        android:layout_height="80dp"
+        android:layout_above="@id/textView2"
+        android:layout_centerHorizontal="true"
+        android:src="@drawable/imagefile"/>
+
+    <TextView
+        android:id="@+id/textView2"
+        android:layout_width="match_parent"
+        android:layout_height="114dp"
+        android:layout_centerInParent="true"
+        android:gravity="center"
+        android:text="이미지 파일을 선택하고\n 번역해보세요"
+        android:textAlignment="center"
+        android:textSize="30sp" />
+
+    <androidx.appcompat.widget.AppCompatButton
+        android:id="@+id/webBtn1"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/textView2"
+        android:layout_centerHorizontal="true"
+        android:background="@drawable/button_back"
+        android:text="File Select" />
+
+    <!--
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="42dp"
+                android:clickable="true"
+                android:onClick="processImage"
+                android:background="#166e78"
+                android:id="@+id/OCRButtonContainer">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="RUN OCR"
+                    android:textSize= "18dp"
+                    android:textColor="#ffffff"
+                    android:layout_centerVertical="true"
+                    android:layout_centerHorizontal="true"
+                    android:clickable="true"
+                    android:onClick="processImage"/>
+
+            </RelativeLayout>
+
+            <RelativeLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/OCRButtonContainer"
+                android:padding="10dp">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="여기에 결과 출력"
+                    android:id="@+id/OCRTextView"
+                    android:textSize="15dp"
+                    android:textColor="#169cdf"
+                    android:layout_centerVertical="true"
+                    android:layout_centerHorizontal="true"
+                    android:background="#fff"
+                    android:scrollbars="vertical"
+                    />
+            </RelativeLayout>
+        </LinearLayout>
+    </ScrollView>
+    -->
+</RelativeLayout>

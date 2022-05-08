@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string-array name="array_setting3">
+        <item>png</item>
+        <item>jpg</item>
+        <item>jpeg</item>
+        <item>tiff</item>
+    </string-array>
+</resources>
