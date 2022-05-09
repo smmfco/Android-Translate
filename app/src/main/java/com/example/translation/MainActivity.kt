@@ -249,7 +249,7 @@ class MainActivity : AppCompatActivity() {
             )
             return@setOnMenuItemClickListener true
         }
-        mode.menu.getItem(1).setOnMenuItemClickListener {
+        mode.menu.getItem(2).setOnMenuItemClickListener {
             cusWebView2.evaluateJavascript(
                 //     "javascript:(function getPTagText2(){\n" +
                 //             "   var tagP = document.getElementsByTagName('p');\n" +
@@ -269,7 +269,7 @@ class MainActivity : AppCompatActivity() {
             }
             return@setOnMenuItemClickListener true
         }
-        mode.menu.getItem(2).setOnMenuItemClickListener {
+        mode.menu.getItem(1).setOnMenuItemClickListener {
             if (fullTranslateMode){
                 fullTranslateMode = false
                 translateOn = false
@@ -363,7 +363,7 @@ class MainActivity : AppCompatActivity() {
     }
 
     val handler = Handler()
-    val millisTime = 100
+    val millisTime = 500
     val handlerTask = object : Runnable {
         override fun run() {
             // do task

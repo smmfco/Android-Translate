@@ -47,6 +47,7 @@
             app:preference_selector="@drawable/wheel" />
     </PreferenceCategory>
 
+    <!--
     <PreferenceCategory android:title="문서 번역 설정">
         <EditTextPreference
             android:key="edit_value"
@@ -64,4 +65,5 @@
             android:key="image_extension"
             android:title="이미지 저장 시 확장자"/>
     </PreferenceCategory>
+    -->
 </PreferenceScreen>
