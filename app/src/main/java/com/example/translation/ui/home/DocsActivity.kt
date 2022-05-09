@@ -22,5 +22,6 @@ class DocsActivity : AppCompatActivity() {
         val pyo : PyObject = py.getModule("docs")
         val text = pyo.callAttr("docsTranslate").toString()
         Log.d("docs-Text",text)
+        //커밋 테스트
     }
 }
