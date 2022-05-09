@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string-array name="array_setting">
+        <item>1px</item>
+        <item>2px</item>
+        <item>5px</item>
+        <item>7px</item>
+        <item>10px</item>
+    </string-array>
+</resources>
